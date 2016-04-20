@@ -37,6 +37,21 @@ function addPoints(err, results) {
     //map.addAnnotations(points);
 }
 
+function goToOnMap(loc) {
+    console.log(loc);
+
+    var pinOptions = {
+        title: loc.item.label,
+        subtitle: loc.item.address,
+        selected: true,
+        callout: calloutDelegate
+    };
+    var pin = new mapkit.PinAnnotation(loc.item.coordinate, pinOptions);
+
+    map.setCenterAnimated(loc.item.coordinate);
+    map.addAnnotation(pin);
+}
+
 function autoComplete(err, results) {
     var index;
     var places = [];
@@ -46,10 +61,9 @@ function autoComplete(err, results) {
     for(index = 0; index < results.results.length; index++) {
         var item = {
             label: results.results[index].displayLines[0],
-            address: results.results[index].displayLines[1]
+            address: results.results[index].displayLines[1],
+            coordinate: (results.results[index].coordinate != null ? results.results[index].coordinate : null)
         };
-
-        //var item = results.results[index].displayLines[0];
 
         places.push(item);
     }
@@ -61,11 +75,20 @@ function suggest(places) {
     console.log("Got suggestions.");
     
     $("#searchBox").autocomplete({
-        source: places
+        source: places,
+        select: function(event, ui) {
+            map.removeAnnotations(map.annotations);
+            goToOnMap(ui);
+        }
     })
     .autocomplete("instance")._renderItem = function (ul, item) {
+        console.log(item);
         return $("<li></li>")
-            .append("<a>" + item.label + "<br><span class=\"autocompleteSubtitle\">" + (item.address != null ? item.address : "") + "</span></a>")
+            .append("<a><span class=\"autocompleteLabel\">" + 
+                    item.label + 
+                    "</span><br><span class=\"autocompleteSubtitle\">" + 
+                    (item.address != null ? item.address : "") + 
+                    "</span></a>")
             .appendTo(ul);
     };
 }
