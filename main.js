@@ -1,3 +1,5 @@
+/*** MapKit Settings ***/
+
 // From https://developer.apple.com/wwdc/attending/
 var apiKey = "b2af5300a3c2ea9b5d38c782c7d2909dc88d6621";
 
@@ -26,3 +28,56 @@ map.setRegionAnimated(appleHQ);
 // User Location settings
 map.showsUserLocation = false;
 map.showsUserLocationControl = true;
+
+/*** End MapKit ***/
+
+/* Not Working
+document.getElementById("map").addEventListener("wheel", function(e) {
+    var newLoc;
+
+    if (e.wheelDelta < 0) {
+        console.log("Down");
+        newLoc = new mapkit.CoordinateRegion(
+                new mapkit.Coordinate(map.center.latitude, map.center.longitude),
+                new mapkit.CoordinateSpan(map.region.span.latitudeDelta, map.region.span.longitudeDelta)
+        );
+    } else {
+        console.log("Up");
+        newLoc = new mapkit.CoordinateRegion(
+                new mapkit.Coordinate(map.center.latitude, map.center.longitude),
+                new mapkit.CoordinateSpan(map.region.span.latitudeDelta, map.region.span.longitudeDelta)
+        );
+    }
+
+    console.log("Map Lat/Long: " + map.region.span.latitudeDelta + "/" + map.region.span.longitudeDelta);
+    console.log("New Lat/Long: " + newLoc.span.latitudeDelta + "/" + newLoc.span.longitudeDelta);
+
+    map.setRegionAnimated(newLoc);
+});
+*/
+
+document.getElementById("map").addEventListener("click", function() {
+    changeStyleForMapType(map.mapType);
+});
+
+function changeStyleForMapType(type) {
+
+    if (type == "standard") {
+
+        var ghl = document.getElementById("github-light");
+        if (ghl != null) {
+            ghl.id = "github-dark";
+        }
+
+        document.getElementById("searchBox").className = "searchbox-dark";
+
+    } else if (type == "hybrid" || type == "satellite") {
+
+        var ghd = document.getElementById("github-dark");
+        if (ghd != null) {
+            ghd.id = "github-light";
+        }
+
+        document.getElementById("searchBox").className = "searchbox-light";
+    }
+};

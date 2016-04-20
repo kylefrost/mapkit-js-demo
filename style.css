@@ -1,0 +1,68 @@
+#map {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.github {
+  z-index: 99;
+  position: absolute;
+  right: 10px;
+  font-weight: 500;
+  font-size: 9px;
+}
+#github-light {
+  z-index: 99;
+  position: absolute;
+  right: 10px;
+  font-weight: 500;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 10px #000000;
+}
+#github-dark {
+  z-index: 99;
+  position: absolute;
+  right: 10px;
+  font-weight: 500;
+  font-size: 9px;
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.85);
+}
+#searchBox {
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin: auto;
+  background-color: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 3px 5px 3px 5px;
+  border-radius: 4px;
+}
+.searchbox-light {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.searchbox-dark {
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.85);
+}
+.centerInput {
+  margin-right: auto;
+  margin-left: auto;
+  width: 30%;
+}
+ul.ui-autocomplete.ui-menu {
+  font-size: 12px;
+}
+.autocompleteSubtitle {
+  font-size: 10px;
+  color: darkGray;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
