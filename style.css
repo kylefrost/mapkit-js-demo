@@ -1,11 +1,33 @@
 @font-face {
   font-family: 'Myriad Pro';
-  src: url('fonts/myriad-set-pro_bold.woff') format('woff'), url('fonts/myriad-set-pro_semibold.woff') format('woff'), url('fonts/myriad-set-pro_text.woff') format('woff'), url('fonts/myriad-set-pro_thin.woff') format('woff');
+  src: url('fonts/myriad-set-pro_text.woff') format('woff');
+}
+@font-face {
+  font-family: 'Myriad Pro Bold';
+  src: url('fonts/myriad-set-pro_bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Myriad Pro SemiBold';
+  src: url('fonts/myriad-set-pro_semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Myriad Pro Thin';
+  src: url('fonts/myriad-set-pro_thin.woff') format('woff');
+}
+.regular {
+  font-family: 'Myriad Pro', sans-serif;
+}
+.bold {
+  font-family: 'Myriad Pro Bold', sans-serif;
+}
+.semibold {
+  font-family: 'Myriad Pro SemiBold', sans-serif;
+}
+.thin {
+  font-family: 'Myriad Pro Thin', sans-serif;
 }
 * {
   font-family: 'Myriad Pro', sans-serif;
-  font-weight: lighter;
-  font-style: normal;
 }
 #map {
   height: 100vh;
@@ -70,8 +92,8 @@ ul.ui-autocomplete.ui-menu {
   background: lightGray none no-repeat !important;
 }
 .autocompleteLabel {
+  font-family: 'Myriad Pro Bold', sans-serif;
   font-size: 13px;
-  font-weight: bold;
 }
 .autocompleteSubtitle {
   font-size: 12px;
